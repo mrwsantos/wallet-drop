@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import CoinsContext from "../../../data/context/CoinsContext";
 import Button from "../../components/Button";
-import { IconLoading, IconRefresh, IconWarning } from "../../components/Icons/Index";
+import {
+  IconLoading,
+  IconRefresh,
+  IconWarning,
+} from "../../components/Icons/Index";
 import Input from "../../components/Input";
 import CardCoin from "../../components/template/CardCoin";
 import Layout from "../../components/template/Layout";
@@ -49,7 +53,7 @@ const moedas = () => {
     setSearchCoins("");
     try {
       const fetchedCoins = await searchCoinById(mainCoins);
-      setMainCoinsInfo(fetchedCoins);
+      if (fetchedCoins) setMainCoinsInfo(fetchedCoins);
     } catch (e: any) {
       setMainCoinsInfo(mainCoins);
       throw new Error(
@@ -98,7 +102,7 @@ const moedas = () => {
     try {
       setLoading(true);
       const fetchedCoins = await searchCoinById(filteredCoins);
-      setMainCoinsInfo(fetchedCoins);
+      if (fetchedCoins) setMainCoinsInfo(fetchedCoins);
     } catch (error: any) {
       setError(true);
       let randomize = Math.random();
