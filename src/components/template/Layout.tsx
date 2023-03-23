@@ -14,7 +14,7 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
-  const { tema, alternarTema } = useAppData();
+  const { tema = "", alternarTema = () => {} } = useAppData();
 
   // POR FUNCAO
   // return forcarAutenticacao(
