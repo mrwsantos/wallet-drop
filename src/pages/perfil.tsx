@@ -1,11 +1,10 @@
 import React from "react";
 import Layout from "../components/template/Layout";
 import useAuth from "./../../data/hook/useAuth";
-import Input from "../components/template/Input";
-import Button from "../components/template/Button";
-
-import IconUserRandom from "./../../public/images/panda.png";
-import IconChange from "./../../public/images/icon-change.png";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import Image from "next/image";
+import { IconChange, IconProfile } from "../components/Icons/Index";
 
 const Perfil = () => {
   const { usuario } = useAuth();
@@ -42,18 +41,30 @@ const Perfil = () => {
         </Button>
 
         <div className="image relative">
-          <img
-            className="w-32 h-32  rounded-full overflow-hidden"
-            alt="Imagem de perfil do usuario"
-            src={usuario?.imagemUrl ?? IconUserRandom.src}
-          />
+          {usuario?.imagemUrl ? (
+            <img
+              className="w-32 h-32  rounded-full overflow-hidden"
+              alt="Imagem de perfil do usuario"
+              src={usuario.imagemUrl}
+            />
+          ) : (
+            <span
+              className=" flex items-center justify-center w-20 h-20 scale-150
+              rounded-full overflow-hidden bg-white text-black
+              border border-zinc-700
+              "
+            >
+              <IconProfile />
+            </span>
+          )}
           {editingMode && (
             <Button
               className="absolute right-0 -bottom-0.5 !p-1 !w-10 !h-10 !rounded-full"
               onClick={() => console.log("TROCAR FOTO")}
-              bgColor="bg-white"
+              bgColor="bg-black"
+              color=" text-white"
             >
-              <img src={IconChange.src} alt="Trocar foto" />
+              <IconChange />
             </Button>
           )}
         </div>
@@ -63,8 +74,9 @@ const Perfil = () => {
             label="Nome"
             value={name}
             disabled={!editingMode ?? undefined}
+            valorMudou={setName}
           />
-          <Input label="Email" value={email} disabled />
+          <Input label="Email" value={email} valorMudou={setEmail} disabled />
 
           {editingMode && (
             <div className="flex justify-center gap-4">

@@ -1,8 +1,7 @@
 import Head from "next/script";
-import Image from "next/image";
 import router from "next/router";
-import Loading from "../../../public/images/loading.gif";
 import useAuth from "../data/hook/useAuth";
+import { IconLoading } from "../src/components/Icons/Index";
 
 const forcarAutenticacao = (jsx) => {
   const { usuario, carregando } = useAuth();
@@ -27,7 +26,7 @@ const forcarAutenticacao = (jsx) => {
         </Head>
 
         <div className="flex justify-center items-center h-screen bg-zinc-800">
-          <Image src={Loading} alt="Gif de carregando"/>
+          <IconLoading/>
         </div>
       </>
     );

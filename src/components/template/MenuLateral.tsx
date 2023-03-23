@@ -1,12 +1,16 @@
 import React from "react";
 import useAuth from "../../../data/hook/useAuth";
+import Button from "../Button";
+import {
+  IconDashboard,
+  IconDollar,
+  IconHome,
+  IconLogout,
+  IconProfile,
+  IconWallet,
+} from "../Icons/Index";
 import Logo from "./Logo";
 import MenuItem from "./MenuItem";
-import IconHome from "./../../../public/images/icon-home.png";
-import IconSettings from "./../../../public/images/icon-settings.png";
-import IconDashboard from "./../../../public/images/icon-graph.png";
-import IconExit from "./../../../public/images/icon-error.png";
-import IconUser from "./../../../public/images/icon-user.png";
 
 const MenuLateral = () => {
   const { logout } = useAuth();
@@ -14,30 +18,40 @@ const MenuLateral = () => {
   return (
     <aside
       className="
-      absolute h-screen
+    fixed h-screen
     flex flex-col
     bg-zinc-200 text-zinc-700
     dark:bg-zinc-800
+    w-10 md:w-24
     "
     >
       <Logo />
       <ul className="flex-grow">
-        <MenuItem url="/" texto="Home" icone={IconHome.src} />
+        <MenuItem url="/" texto="MINHA CARTEIRA" icone={<IconWallet />} />
         <MenuItem
           url="/dashboard"
-          texto="Dashboard"
-          icone={IconDashboard.src}
+          texto="DASHBOARD"
+          icone={<IconDashboard />}
         />
-        {/* <MenuItem url="/ajustes" texto="Ajustes" icone={IconSettings.src} /> */}
-        <MenuItem url="/perfil" texto="Perfil" icone={IconUser.src} />
+        <MenuItem url="/moedas" texto="MOEDAS" icone={<IconDollar />} />
+        <MenuItem url="/perfil" texto="PERFIL" icone={<IconProfile />} />
       </ul>
-      <ul className="">
-        <MenuItem
+      <ul className="p-2 mb-4">
+        <Button
+          className={` 
+          border border-zinc-700 md:px-2
+          hover:bg-zinc-700 hover:text-white 
+          dark:border-white dark:text-white `
+        }
+          bgColor="bg-red-500"
+          color="text-white"
           onClick={() => logout()}
-          texto="Sair"
-          icone={IconExit.src}
-          className={`hover:text-white hover:bg-zinc-700`}
-        />
+        >
+          <span className="hidden md:block">
+          Sair
+          </span>
+          <IconLogout />
+        </Button>
       </ul>
     </aside>
   );

@@ -33,10 +33,13 @@ export default function Layout(props: LayoutProps) {
 
   return (
     <ForcarAutenticacao>
-      <div className={`${tema} flex min-h-screen w-screen`}>
+      <div className={`${tema} flex min-h-screen`}>
         <MenuLateral />
         <div
-          className={`flex flex-col w-full p-4 pl-24 bg-zinc-300 dark:bg-zinc-900`}
+          className={`content flex flex-col
+            py-4 pr-4 pl-14 md:pl-28
+            bg-zinc-300 dark:bg-zinc-900 w-full
+            `}
         >
           <Cabecalho titulo={props.titulo} subtitulo={props.subtitulo} />
           <Conteudo>{props.children}</Conteudo>

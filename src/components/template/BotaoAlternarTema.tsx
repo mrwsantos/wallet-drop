@@ -1,5 +1,5 @@
 import React from "react";
-import { IconeLua, IconeSol } from "../Icons/Index";
+import { IconMoon, IconSun } from "../Icons/Index";
 
 interface BotaoAlternarTemaProps {
   tema: string;
@@ -24,7 +24,7 @@ const BotaoAlternarTema = (props: BotaoAlternarTemaProps) => {
       w-4 h-4 rounded-full
       `}
       >
-        {IconeSol(4)}
+        <IconSun />
       </div>
     </div>
   ) : (
@@ -40,7 +40,7 @@ const BotaoAlternarTema = (props: BotaoAlternarTemaProps) => {
       <div
         className={`flex items-center justify-center text-zinc-700 w-4 h-4 rounded-full `}
       >
-        {IconeLua(4)}
+        <IconMoon />
       </div>
     </div>
   );

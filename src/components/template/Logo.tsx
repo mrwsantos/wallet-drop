@@ -1,18 +1,19 @@
 import React from "react";
-import Image from "next/image";
-import Logotype from "./../../../public/images/logo-small.png";
+import { IconWallet } from "../Icons/Index";
+import ImageWallet from './../../assets/image-wallet.png'
 
 const Logo = () => {
   return (
     <div
       className={`
     flex flex-col items-center justify-center 
-     h-20 w-20 p-2 pl-4
-     bg-zinc-800
+     h-20 md:w-24 
     `}
     >
-      <a href="/">
-        <Image src={Logotype} alt="Logo" />
+      <a href="/" className="text-white dark:text-zinc-700 ">
+        <img src={ImageWallet.src} alt="Logo" className="w-10 sm:w-16 my-2 mx-auto"/>
+        <hr className="border-zinc-300 dark:border-zinc-500 mb-2"/>
+        {/* <IconWallet /> */}
       </a>
     </div>
   );

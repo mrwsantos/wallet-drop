@@ -1,15 +1,16 @@
 import React from "react";
 import AuthInput from "../components/auth/AuthInput";
 import {
-  IconeAtencao,
-  IconeCadastro,
-  IconeEntrar,
-  IconeGoogle,
+  IconAttention,
+  IconRegister,
+  IconLogin,
+  IconGoogle,
+  IconWallet,
 } from "../components/Icons/Index";
 import useAuth from "../../data/hook/useAuth";
-import Logo from "./../../public/images/logo-white.png";
-import Image from "next/image";
-import Button from "../components/template/Button";
+import Button from "../components/Button";
+
+import ImageWallet from "./../assets/image-wallet.png";
 
 const Autenticacao = () => {
   const { cadastrar, loginGoogle, login, erro, setErro } = useAuth();
@@ -20,13 +21,13 @@ const Autenticacao = () => {
   const [senha, setSenha] = React.useState("");
 
   React.useEffect(() => {
-    if(erro !== ''){
-      exibirErro(erro)
+    if (erro !== "") {
+      exibirErro(erro);
     }
   }, [erro]);
 
   function exibirErro(msg: string, tempoEmSegundos: number = 5) {
-    setTimeout(() => setErro(''), tempoEmSegundos * 1000);
+    setTimeout(() => setErro(""), tempoEmSegundos * 1000);
   }
 
   async function submeter() {
@@ -42,17 +43,21 @@ const Autenticacao = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row h-28 md:h-screen items-center justify-center">
+    <div className="flex flex-col md:flex-row items-center justify-center">
       <div
-        className={`relative flex items-center justify-center 
-      md:w-3/5 bg-zinc-900`}
+        className={`relative flex items-center justify-center w-full
+      md:w-3/5 min-h-full max-h-60 md:max-h-screen md:h-screen bg-zinc-900 overflow-hidden`}
       >
         <img
           className="h-screen w-full object-cover mix-blend-overlay "
-          src="https://source.unsplash.com/random?currencies"
+          src="https://images.unsplash.com/photo-1608603742375-4ec9f53da578?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          // src="https://source.unsplash.com/random"
           alt="Imagem da tela de autenticacao"
         />
-        <Image className="absolute top-1/2 left-1/2 block w-10 md:w-80 mx-auto" src={Logo} alt="Logo" />
+        <span className="absolute top-1/2 left-1/2 block -translate-x-1/2 -translate-y-1/2">
+          <img src={ImageWallet.src} alt="Logo" className="w-36 m-auto md:w-48" />
+          <p className="text-white text-5xl font-bold">WalletDrop</p>
+        </span>
       </div>
       <div className="p-4 md:p-0 md:m-10 w-full md:w-2/5">
         <h1 className="text-2xl md:text-3xl font-bold mb-5">
@@ -62,7 +67,7 @@ const Autenticacao = () => {
         </h1>
         {erro && (
           <div className="flex gap-2 items-center bg-red-400 text-white font-bold py-3 px-5 my-2 border border-red-700 rounded-lg">
-            <IconeAtencao />
+            <IconAttention />
             <span>{erro}</span>
           </div>
         )}
@@ -81,26 +86,33 @@ const Autenticacao = () => {
           valorMudou={setSenha}
           obrigatorio
         />
-        <Button onClick={submeter} className="mt-6">
+        <Button onClick={submeter} className="mt-6 h-14 w-full">
           {modo === "login" ? (
             <>
-              Entrar <IconeEntrar />
+              Entrar <IconLogin />
             </>
           ) : (
             <>
-              Cadastrar <IconeCadastro />
+              Cadastrar <IconRegister />
             </>
           )}
         </Button>
         <hr className="my-6 border-zinc-300 w-full" />
-        <Button onClick={loginGoogle} bgColor="bg-red-600" color="text-white">
+        <Button
+          onClick={loginGoogle}
+          className="h-14 w-full"
+          bgColor="bg-red-600"
+          color="text-white"
+        >
           {modo === "login" ? (
             <>
-              Entrar com google <IconeGoogle />
+              Entrar com Google
+              <IconGoogle />
             </>
           ) : (
             <>
-              Cadastrar com Google Email <IconeGoogle />
+              Cadastrar com Google
+              <IconGoogle />
             </>
           )}
         </Button>

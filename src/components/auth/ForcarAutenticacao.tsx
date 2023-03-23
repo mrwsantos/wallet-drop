@@ -1,20 +1,21 @@
 import Head from "next/script";
-import Image from "next/image";
 import router from "next/router";
-import Loading from "../../../public/images/loading.gif";
 import useAuth from "../../../data/hook/useAuth";
+import { IconLoading } from "../Icons/Index";
 
-const forcarAutenticacao = (props) => {
+const forcarAutenticacao = ({ children }: any) => {
   const { usuario, carregando } = useAuth();
 
   function renderizarConteudo() {
-    return <>{props.children}</>;
+    return <>{children}</>;
   }
 
   function renderizarCarregando() {
     return (
       <>
-        <Head> // MAIS UMA CAMADA DE SEGURANÇA
+        <Head>
+          {" "}
+          // MAIS UMA CAMADA DE SEGURANÇA
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -27,7 +28,7 @@ const forcarAutenticacao = (props) => {
         </Head>
 
         <div className="flex justify-center items-center h-screen bg-zinc-800">
-          <Image src={Loading} />
+          <IconLoading/>
         </div>
       </>
     );
