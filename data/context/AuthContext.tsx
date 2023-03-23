@@ -25,7 +25,22 @@ interface AuthContextProps {
   setErro: (msg: string) => void;
 }
 
-const AuthContext = createContext<AuthContextProps>({});
+const AuthContext = createContext<AuthContextProps>({
+  usuario: {
+    uid: "",
+    email: "",
+    nome: "",
+    token: "",
+    provedor: "",
+    imagemUrl: "",
+  },
+  cadastrar: () => Promise.resolve(),
+  login: () => Promise.resolve(),
+  loginGoogle: () => {},
+  logout: () => Promise.resolve(),
+  erro: "",
+  setErro: () => {},
+});
 
 async function usuarioNormalizado(usuarioFirebase: any) {
   const token = await usuarioFirebase.getIdToken();
@@ -50,7 +65,14 @@ function gerenciarCookie(logado: boolean) {
 }
 
 export function AuthProvider(props: any) {
-  const [usuario, setUsuario] = useState<Usuario>(null);
+  const [usuario, setUsuario] = useState<Usuario>({
+    uid: "",
+    email: "",
+    nome: "",
+    token: "",
+    provedor: "",
+    imagemUrl: "",
+  });
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = React.useState<any>(null);
 
@@ -62,7 +84,14 @@ export function AuthProvider(props: any) {
       setCarregando(false);
       return usuario.email;
     } else {
-      setUsuario(null);
+      setUsuario({
+        uid: "",
+        email: "",
+        nome: "",
+        token: "",
+        provedor: "",
+        imagemUrl: "",
+      });
       gerenciarCookie(false);
       setCarregando(false);
       return false;
@@ -87,7 +116,7 @@ export function AuthProvider(props: any) {
       });
   }
 
-  function login(email: string, senha: string) {
+  async function login(email: string, senha: string): Promise<void> {
     setCarregando(true);
     signInWithEmailAndPassword(auth, email, senha)
       .then((result) => {
@@ -100,7 +129,7 @@ export function AuthProvider(props: any) {
       });
   }
 
-  function cadastrar(email: string, senha: string) {
+  async function cadastrar(email: string, senha: string): Promise<void> {
     setCarregando(true);
     createUserWithEmailAndPassword(auth, email, senha)
       .then((cred) => {
