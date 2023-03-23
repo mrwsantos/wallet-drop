@@ -16,8 +16,6 @@
     "js-cookie": "^3.0.1",
     "next": "13.0.4",
     "react": "18.2.0",
-    "react-custom-roulette": "^1.2.0",
-    "react-custom-roulette-skate": "^1.2.3",
     "react-dom": "18.2.0",
     "react-minimal-pie-chart": "^8.4.0",
     "typescript": "4.9.3"
