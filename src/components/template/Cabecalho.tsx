@@ -19,7 +19,9 @@ const Cabecalho = (props: CabecalhoProps) => {
 
   React.useEffect(() => {
     let uniqueObject = (a: any) =>
-      [...new Set(a.map((o) => JSON.stringify(o)))].map((s) => JSON.parse(s));
+      [...new Set(a.map((o: any) => JSON.stringify(o)))].map((s: any) =>
+        JSON.parse(s)
+      );
     // console.log("AKA: ", treatedData(totalInvested));
 
     let treatedInvested = uniqueObject(totalInvested);
