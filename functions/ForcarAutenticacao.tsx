@@ -3,7 +3,7 @@ import router from "next/router";
 import useAuth from "../data/hook/useAuth";
 import { IconLoading } from "../src/components/Icons/Index";
 
-const forcarAutenticacao = (jsx) => {
+const forcarAutenticacao = (jsx:any) => {
   const { usuario, carregando } = useAuth();
 
   function renderizarConteudo() {
