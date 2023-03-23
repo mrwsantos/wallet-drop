@@ -7,7 +7,7 @@ interface AppContextPrps {
 
 const AppContext = createContext<AppContextPrps>({
   tema: '',
-  alternarTema: () => void
+  alternarTema: undefined
 });
 
 export function AppProvider({children}:any) {
