@@ -9,7 +9,14 @@ interface CoinsContextProps {
   setTotalBalanceInvested: any;
 }
 
-const CoinsContext = createContext<CoinsContextProps>({});
+const CoinsContext = createContext<CoinsContextProps>({
+  allCoins: [],
+  coinsList: () => {},
+  setTotalInvested: '',
+  totalInvested: '',
+  totalBalanceInvested: '',
+  setTotalBalanceInvested: '',
+});
 
 export function CoinProvider(props: any) {
   const [carregando, setCarregando] = React.useState(true);
