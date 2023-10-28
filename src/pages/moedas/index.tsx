@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CoinsContext from "../../../data/context/CoinsContext";
 import Button from "../../components/Button";
 import {
@@ -36,15 +36,16 @@ const mainCoins = [
 ];
 
 const moedas = () => {
-  const [mainCoinsInfo, setMainCoinsInfo] = React.useState<any[]>([]);
-  const [searchCoins, setSearchCoins] = React.useState<string>("");
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [error, setError] = React.useState<boolean>(false);
-  const [toast, setToast] = React.useState<ToastInfoProps>();
+  const [mainCoinsInfo, setMainCoinsInfo] = useState<any[]>([]);
+  const [searchCoins, setSearchCoins] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [errorGetCoins, setErrorGetCoins] = useState<boolean>(false);
+  const [toast, setToast] = useState<ToastInfoProps>();
 
   const { allCoins } = useContext(CoinsContext);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getMainCoins();
   }, []);
 
@@ -52,11 +53,13 @@ const moedas = () => {
     console.log('entrei em')
     setLoading(true);
     setSearchCoins("");
+    setErrorGetCoins(false)
     try {
       const fetchedCoins = await searchCoinById(mainCoins);
       if (fetchedCoins) setMainCoinsInfo(fetchedCoins);
     } catch (e: any) {
       setMainCoinsInfo(mainCoins);
+      setErrorGetCoins(true)
       throw new Error(
         "Erro na requisição. Tente novamente mais tarde! ERR #",
         e
@@ -79,7 +82,7 @@ const moedas = () => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     filterCoins();
   }, [searchCoins]);
 
@@ -132,6 +135,7 @@ const moedas = () => {
       relative
       "
       >
+        {errorGetCoins && <p>Não foi possível buscar moedas, tente novamente mais tarde.</p>}
         {searchCoins.length > 0 && (
           <p className="informativo text-red-700 dark:text-yellow-500 block w-full mb-4 md:absolute -top-6">
             ** Para filtrar pelas principais moedas, digite algo. Para encontrar

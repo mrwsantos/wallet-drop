@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   IconAttention,
   IconSuccess,
@@ -20,9 +20,9 @@ const ToastInfo = ({
   errorId,
   time = 3000,
 }: ToastInfoProps) => {
-  const [display, setDisplay] = React.useState<boolean>(true);
+  const [display, setDisplay] = useState<boolean>(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
 
     setDisplay(true);
     setTimeout(() => {

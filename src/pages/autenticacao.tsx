@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
 import {
   IconAttention,
   IconRegister,
   IconLogin,
   IconGoogle,
-  IconWallet,
 } from "../components/Icons/Index";
 import useAuth from "../../data/hook/useAuth";
 import Button from "../components/Button";
@@ -15,12 +14,11 @@ import ImageWallet from "./../assets/image-wallet.png";
 const Autenticacao = () => {
   const { cadastrar, loginGoogle, login, erro, setErro } = useAuth();
 
-  // const [errorMessage, setErrorMsg] = React.useState(null);
-  const [modo, setModo] = React.useState<"login" | "cadastro">("login");
-  const [email, setEmail] = React.useState("");
-  const [senha, setSenha] = React.useState("");
+  const [modo, setModo] = useState<"login" | "cadastro">("login");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (erro !== "") {
       exibirErro(erro);
     }

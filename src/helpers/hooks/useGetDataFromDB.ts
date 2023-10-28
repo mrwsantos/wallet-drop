@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { app } from "./../../services/FirebaseConfig";
 
 const db = getFirestore(app);
 
 const useGetDataFromDB = (collectionName: string) => {
-  const [data, setData] = React.useState<any>(null);
-  const [error, setError] = React.useState<any>(null);
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const [data, setData] = useState<any>(null);
+  const [error, setError] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const docRef = collection(db, collectionName);
 
-  const request = React.useCallback(async () => {
+  const request = useCallback(async () => {
     let response;
 
     try {
@@ -21,13 +21,14 @@ const useGetDataFromDB = (collectionName: string) => {
         ...doc.data(),
         id: doc.id,
       }));
+      console.log('KKKKKKKKKKKKKKKKKKKKKKKK: ', response)
+      setData(response);
+      return { response };
     } catch (e: any) {
       setError(e);
       setLoading(false);
     } finally {
-      setData(response);
       setLoading(false);
-      return { response };
     }
   }, []);
 

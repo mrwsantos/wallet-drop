@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InvestmentCard from "../components/template/InvestmentCard";
 import Layout from "../components/template/Layout";
 import useGetDataFromDB from "../helpers/hooks/useGetDataFromDB";
 
 export default function Home() {
   const { request } = useGetDataFromDB("myWalletCurrencies");
-  const [cardsInvestments, setCardsInvestments] = React.useState<any[]>();
+  const [cardsInvestments, setCardsInvestments] = useState<any[]>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function fetchDataFromDB() {
       const { response } = await request();
       setCardsInvestments(response);
@@ -15,7 +15,7 @@ export default function Home() {
     fetchDataFromDB();
   }, [request]);
 
-  React.useEffect(()=>{
+  useEffect(()=>{
     renderInvestmentCards()
   },[cardsInvestments])
 
