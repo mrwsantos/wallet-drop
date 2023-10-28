@@ -44,13 +44,13 @@ const Cabecalho = (props: CabecalhoProps) => {
       <div className="flex flex-grow justify-center sm:justify-end items-center gap-4">
         <div className="flex gap-4 items-center justify-center sm:justify-end w-full border-b mb-4 pb-4 sm:border-none sm:m-0 sm:pb-0">
           <div className="flex flex-col items-center justify-center font-bold  dark:text-white">
-            <p className="  text-center">Total Investido</p>
+            <p className="  text-center">Total Invested</p>
             <span className="text-2xl">
               {exchange(totalInvestedOnWallet, "brl", 2)}
             </span>
           </div>
           <div className="flex flex-col font-bold items-center justify-center dark:text-white">
-            <p className="  text-center">Balanço Geral</p>
+            <p className="  text-center">General Balance</p>
             {totalBalanceOnWallet < 0 ? (
               <span className="text-2xl text-red-500">
                 {exchange(totalBalanceOnWallet, "brl", 2)}

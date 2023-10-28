@@ -19,8 +19,8 @@ const forcarAutenticacao = ({ children }: any) => {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                    if(!document.cookie?.includes("wallet-drop-coder-auth')){
-                        window.location.href = "/autenticacao"
+                    if(!document.cookie?.includes("wallet-watch-coder-auth')){
+                        window.location.href = "/auth"
                     }
                 `,
             }}
@@ -39,7 +39,7 @@ const forcarAutenticacao = ({ children }: any) => {
   } else if (carregando) {
     return renderizarCarregando();
   } else {
-    router.push("/autenticacao");
+    router.push("/auth");
     return null;
   }
 };

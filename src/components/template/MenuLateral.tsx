@@ -27,14 +27,14 @@ const MenuLateral = () => {
     >
       <Logo />
       <ul className="flex-grow">
-        <MenuItem url="/" texto="MINHA CARTEIRA" icone={<IconWallet />} />
+        <MenuItem url="/" texto="MY WALLET" icone={<IconWallet />} />
         <MenuItem
           url="/dashboard"
           texto="DASHBOARD"
           icone={<IconDashboard />}
         />
-        <MenuItem url="/moedas" texto="MOEDAS" icone={<IconDollar />} />
-        <MenuItem url="/perfil" texto="PERFIL" icone={<IconProfile />} />
+        <MenuItem url="/coins" texto="COINS" icone={<IconDollar />} />
+        <MenuItem url="/profile" texto="PROFILE" icone={<IconProfile />} />
       </ul>
       <ul className="p-2 mb-4">
         <Button
@@ -48,7 +48,7 @@ const MenuLateral = () => {
           onClick={() => logout()}
         >
           <span className="hidden md:block">
-          Sair
+          Logout
           </span>
           <IconLogout />
         </Button>

@@ -8,7 +8,7 @@ const dashboard = () => {
   return (
     <Layout
       titulo="dashboard"
-      subtitulo="Aqui você irá gerenciar suas dashboard">
+      subtitulo="Manage your dashboards">
    
     <h1>Dashboard</h1>
     </Layout>
