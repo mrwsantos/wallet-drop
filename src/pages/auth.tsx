@@ -54,7 +54,7 @@ const Autenticacao = () => {
         />
         <span className="absolute top-1/2 left-1/2 block -translate-x-1/2 -translate-y-1/2">
           <img src={ImageWallet.src} alt="Logo" className="w-36 m-auto md:w-48" />
-          <p className="text-white text-5xl font-bold">WalletDrop</p>
+          <p className="text-white text-5xl font-bold">WalletWatch</p>
         </span>
       </div>
       <div className="p-4 md:p-0 md:m-10 w-full md:w-2/5">
