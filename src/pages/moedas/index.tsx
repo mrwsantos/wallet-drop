@@ -26,11 +26,11 @@ const mainCoins = [
   { id: "polkadot" },
   { id: "tron" },
   { id: "api3" },
-  { id: "leo" },
+  // { id: "leo" },
   { id: "shiba-inu" },
   { id: "wrapped-bitcoin" },
-  { id: "avalanche-2" },
-  { id: "litecoin" },
+  // { id: "avalanche-2" },
+  // { id: "litecoin" },
   { id: "uniswap" },
   { id: "matic-network" },
 ];
@@ -49,6 +49,7 @@ const moedas = () => {
   }, []);
 
   async function getMainCoins() {
+    console.log('entrei em')
     setLoading(true);
     setSearchCoins("");
     try {

@@ -22,12 +22,12 @@ const CardCoin = ({
   min24,
   max24,
 }: CardCoinProps) => {
-  const priceBrl = exchange(price.brl, "brl");
-  const priceUsd = exchange(price.usd, "usd");
+  const priceBrl = exchange(price?.brl, "brl");
+  const priceUsd = exchange(price?.usd, "usd");
   const min24Brl = exchange(min24, "brl");
   const max24Brl = exchange(max24, "brl");
 
-  const percentage = (price.brl * 100) / min24 - 100 || false;
+  const percentage = (price?.brl * 100) / min24 - 100 || false;
 
   return (
     <div

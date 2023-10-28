@@ -112,7 +112,8 @@ export function AuthProvider(props: any) {
         route.push("/");
       })
       .catch((error: any) => {
-        validaErros(error);
+        console.log('error: ', error)
+        // validaErros(error);
       });
   }
 
