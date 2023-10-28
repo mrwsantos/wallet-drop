@@ -52,17 +52,17 @@ const moedas = () => {
   async function getMainCoins() {
     setLoading(true);
     setSearchCoins("");
-    setErrorGetCoins(false)
+    setErrorGetCoins(false);
     try {
       const fetchedCoins = await searchCoinById(mainCoins);
       if (fetchedCoins) setMainCoinsInfo(fetchedCoins);
     } catch (e: any) {
       setMainCoinsInfo(mainCoins);
-      setErrorGetCoins(true)
-      throw new Error(
-        "Erro na requisição. Tente novamente mais tarde! ERR #",
-        e
-      );
+      setErrorGetCoins(true);
+      // throw new Error(
+      //   "Request error. Try again later! ERR #",
+      //   e
+      // );
     } finally {
       setLoading(false);
     }
@@ -96,7 +96,7 @@ const moedas = () => {
       setToast({
         randomize,
         type: "error",
-        message: ":( Busca sem resultados. Seja mais específico.",
+        message: ":( No results found. Please be more specific.",
       });
       setError(true);
       return;
@@ -114,7 +114,7 @@ const moedas = () => {
         time: 10000,
         type: "warning",
         message:
-          "Wow, Wow! Vá com calma, amigão! Houveram muitas requisições em tão pouco tempo. Tome uma água enquanto isso.",
+          "Wow, wow! Take it easy, buddy! There have been a lot of requests in such a short time. Have a drink while you wait.",
       });
     } finally {
       setLoading(false);
@@ -123,8 +123,8 @@ const moedas = () => {
 
   return (
     <Layout
-      titulo="Moedas"
-      subtitulo="Veja as cotações atuais das principais moedas"
+      titulo="Coins"
+      subtitulo="See the current exchange rates of the major currencies"
     >
       <div
         className="
@@ -134,12 +134,10 @@ const moedas = () => {
       relative
       "
       >
-        {errorGetCoins && <p>Não foi possível buscar moedas, tente novamente mais tarde.</p>}
         {searchCoins.length > 0 && (
           <p className="informativo text-red-700 dark:text-yellow-500 block w-full mb-4 md:absolute -top-6">
-            ** Para filtrar pelas principais moedas, digite algo. Para encontrar
-            uma que não se encontra na lista, digite um nome e clique no botão
-            busca.
+            ** To filter by major currencies, type something. To find one that
+            is not on the list, enter a name and click the search button..
           </p>
         )}
         <div className="flex items-center w-full">
@@ -147,13 +145,13 @@ const moedas = () => {
             className="rounded-lg"
             value={searchCoins}
             valorMudou={setSearchCoins}
-            placeholder="Busque por alguma moeda."
+            placeholder="Search for coins"
           />
           <Button
             className="w-20 ml-4 h-10 p-2"
             onClick={() => handleWithSearch()}
           >
-            Busca
+            Search
           </Button>
         </div>
         <Button
@@ -162,7 +160,7 @@ const moedas = () => {
           "
           onClick={() => getMainCoins()}
         >
-          Atualizar Principais Moedas
+          Refresh
           <IconRefresh />
         </Button>
       </div>
@@ -177,30 +175,34 @@ const moedas = () => {
         lg:grid-cols-4
         "
         >
-          {mainCoinsInfo.map((coin, idx) => {
-            let price = coin.market_data?.current_price;
-            let min24 = coin.market_data?.low_24h.brl;
-            let max24 = coin.market_data?.high_24h.brl;
-            return (
-              <CardCoin
-                key={idx}
-                index={idx}
-                name={coin.name}
-                symbol={coin.symbol}
-                image={coin.image?.small ?? ""}
-                price={price}
-                min24={min24}
-                max24={max24}
-                // description={coin?.description.en}
-              />
-            );
-          })}
+          {errorGetCoins ? (
+            <p>Currency search failed, please try again later.</p>
+          ) : (
+            mainCoinsInfo.map((coin, idx) => {
+              let price = coin.market_data?.current_price;
+              let min24 = coin.market_data?.low_24h.brl;
+              let max24 = coin.market_data?.high_24h.brl;
+              return (
+                <CardCoin
+                  key={idx}
+                  index={idx}
+                  name={coin.name}
+                  symbol={coin.symbol}
+                  image={coin.image?.small ?? ""}
+                  price={price}
+                  min24={min24}
+                  max24={max24}
+                  // description={coin?.description.en}
+                />
+              );
+            })
+          )}
         </div>
       )}
 
       {mainCoinsInfo.length <= 0 && (
         <div className="text-center mx-auto p-4 flex items-center gap-2">
-          <IconWarning /> <p>NADA PARA SE EXIBIR AQUI</p>
+          <IconWarning /> <p>NOTHING TO SEE HERE</p>
         </div>
       )}
 

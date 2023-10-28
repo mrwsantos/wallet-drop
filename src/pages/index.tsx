@@ -21,7 +21,7 @@ export default function Home() {
   }, [request]);
 
   return (
-    <Layout titulo="Minha Carteira" subtitulo="Gerencie seus investimentos">
+    <Layout titulo="My Wallet" subtitulo="Manage your investments">
       <main className="section grid gap-2 md:gap-4 grid-cols-1 lg:grid-cols-2">
         {cardsInvestments?.map((card) => (
           <InvestmentCard

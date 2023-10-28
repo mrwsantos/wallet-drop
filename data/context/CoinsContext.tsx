@@ -32,7 +32,7 @@ export function CoinProvider(props: any) {
 
   async function coinsList() {
     let allCoinsOnStorage = window.localStorage.getItem(
-      "wallet-drop-all-coins"
+      "wallet-watch-all-coins"
     );
 
     if (allCoinsOnStorage && allCoinsOnStorage?.length > 0) {
@@ -44,7 +44,7 @@ export function CoinProvider(props: any) {
         const coins = await resp.json();
         setAllCoins(coins);
         window.localStorage.setItem(
-          "wallet-drop-all-coins",
+          "wallet-watch-all-coins",
           JSON.stringify(coins)
         );
       } catch (e: any) {

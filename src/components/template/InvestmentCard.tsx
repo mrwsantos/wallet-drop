@@ -148,13 +148,13 @@ const InvestmentCard = ({ currencyId, transactions }: InvestmentCardProps) => {
         </h2>
         <div className="card-body-left flex flex-col gap-2">
           <h3 className="font-bold text-zinc-700 dark:text-white">
-            Investido Total:{" "}
+            Total Invested:{" "}
             <span className="invested-on-wallet text-yellow-500 ml-2">
               {exchange(invested)}
             </span>
           </h3>
           <p className="font-bold text-zinc-700 dark:text-white">
-            Quantidade:{" "}
+            Quantity:{" "}
             <span className="text-yellow-500 ml-2">
               {`${quantity}`.replace(".", ",")}
             </span>
@@ -163,35 +163,17 @@ const InvestmentCard = ({ currencyId, transactions }: InvestmentCardProps) => {
         <div className="card-body-right flex flex-col items-end gap-2">
           {balance < 0 ? (
             <div className="text-red-500 flex flex-col items-end">
-              <p>PERDA</p>
+              <p>LOSS</p>
               <h3 className="font-bold">{exchange(balance)}</h3>
             </div>
           ) : (
             <div className=" text-lime-500 flex flex-col items-end">
-              <p>GANHO</p>
+              <p>GAIN</p>
               <h3 className="font-bold">{exchange(balance)}</h3>
             </div>
           )}
         </div>
       </div>
-
-      {/* <div className="w-full text-center">
-        <hr className="my-2" />
-        <table>
-          <thead>
-            <th>ok</th>
-            <th>ok2</th>
-            <th>ok3</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>pora</td>
-              <td>meua</td>
-              <td>pmigo</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> */}
     </div>
   );
 };

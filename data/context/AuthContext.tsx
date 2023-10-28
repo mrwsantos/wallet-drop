@@ -56,11 +56,11 @@ async function usuarioNormalizado(usuarioFirebase: any) {
 
 function gerenciarCookie(logado: boolean) {
   if (logado) {
-    Cookies.set("wallet-drop-coder-auth", `${logado}`, {
+    Cookies.set("wallet-watch-coder-auth", `${logado}`, {
       expires: 7,
     });
   } else {
-    Cookies.remove("wallet-drop-coder-auth");
+    Cookies.remove("wallet-watch-coder-auth");
   }
 }
 
@@ -147,14 +147,14 @@ export function AuthProvider(props: any) {
       setCarregando(true);
       await auth.signOut();
       await configurarSessao(null);
-      route.push("/autenticacao");
+      route.push("/auth");
     } finally {
       setCarregando(false);
     }
   }
 
   useEffect(() => {
-    if (Cookies.get("wallet-drop-coder-auth")) {
+    if (Cookies.get("wallet-watch-coder-auth")) {
       const cancelar = auth.onIdTokenChanged(configurarSessao);
       return () => cancelar();
     } else {
@@ -167,9 +167,9 @@ export function AuthProvider(props: any) {
     if (e.includes("user-not-found")) {
       setErro("Usuario não encontrado");
     } else if (e.includes("invalid-email")) {
-      setErro("Email inválido");
+      setErro("Invalid email");
     } else {
-      setErro("Verifique se todos os campos foram preenchidos.");
+      setErro("Check if all fields have been filled in.");
     }
   }
 

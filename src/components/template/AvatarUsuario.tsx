@@ -11,10 +11,10 @@ const AvatarUsuario = ({ className }: AvatarUsuarioProps) => {
   const { usuario } = useAuth();
 
   return (
-    <Link href="/perfil">
+    <Link href="/profile">
       <div
         className="hidden md:flex items-center cursor-pointer "
-        title="Perfil do Usuario"
+        title="User profile"
       >
         <span className="text-black dark:text-white font-bold">
           <span className="ml-2">{usuario?.nome ?? "Anonymous"}</span>

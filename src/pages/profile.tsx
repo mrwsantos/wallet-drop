@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/template/Layout";
-import useAuth from "./../../data/hook/useAuth";
+import useAuth from "../../data/hook/useAuth";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { IconChange, IconProfile } from "../components/Icons/Index";
@@ -20,8 +20,8 @@ const Perfil = () => {
   //DUPLICAMOS USUARIO PARA PODER MODIFICAR
   return (
     <Layout
-      titulo="Perfil do usuario"
-      subtitulo="Administre suas configurações de usuário"
+      titulo="User profile"
+      subtitulo="Manage your profile settings"
     >
       <section
         className={`
@@ -36,14 +36,14 @@ const Perfil = () => {
           }`}
           onClick={() => setEditingMode((prev) => !prev)}
         >
-          {editingMode ? "Editando perfil" : "Editar perfil"}
+          {editingMode ? "Editing profile" : "Edit profile"}
         </Button>
 
         <div className="image relative">
           {usuario?.imagemUrl ? (
             <img
               className="w-32 h-32  rounded-full overflow-hidden"
-              alt="Imagem de perfil do usuario"
+              alt="User image"
               src={usuario.imagemUrl}
             />
           ) : (
@@ -59,7 +59,7 @@ const Perfil = () => {
           {editingMode && (
             <Button
               className="absolute right-0 -bottom-0.5 !p-1 !w-10 !h-10 !rounded-full"
-              onClick={() => console.log("TROCAR FOTO")}
+              onClick={() => console.log("CHANGE IMAGE")}
               bgColor="bg-black"
               color=" text-white"
             >
@@ -70,7 +70,7 @@ const Perfil = () => {
 
         <form className="w-full mt-4 mx-auto" action="">
           <Input
-            label="Nome"
+            label="Name"
             value={name}
             disabled={!editingMode ?? undefined}
             valorMudou={setName}
@@ -92,7 +92,7 @@ const Perfil = () => {
                 onClick={() => setEditingMode((prev) => !prev)}
                 disabled
               >
-                Função nao habilitada ainda
+                Still unavailable feature
               </Button>
             </div>
           )}

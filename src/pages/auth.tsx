@@ -48,7 +48,7 @@ const Autenticacao = () => {
       >
         <img
           className="h-screen w-full object-cover mix-blend-overlay "
-          src="https://images.unsplash.com/photo-1608603742375-4ec9f53da578?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          src="https://source.unsplash.com/random?blockchain"
           // src="https://source.unsplash.com/random"
           alt="Imagem da tela de autenticacao"
         />
@@ -60,8 +60,8 @@ const Autenticacao = () => {
       <div className="p-4 md:p-0 md:m-10 w-full md:w-2/5">
         <h1 className="text-2xl md:text-3xl font-bold mb-5">
           {modo === "login"
-            ? "Entre com sua conta"
-            : "Cadastre-se na plataforma"}
+            ? "Login in with your account"
+            : "Register your account"}
         </h1>
         {erro && (
           <div className="flex gap-2 items-center bg-red-400 text-white font-bold py-3 px-5 my-2 border border-red-700 rounded-lg">
@@ -79,7 +79,7 @@ const Autenticacao = () => {
         />
         <AuthInput
           tipo="password"
-          label="Senha"
+          label="Password"
           valor={senha}
           valorMudou={setSenha}
           obrigatorio
@@ -87,11 +87,11 @@ const Autenticacao = () => {
         <Button onClick={submeter} className="mt-6 h-14 w-full">
           {modo === "login" ? (
             <>
-              Entrar <IconLogin />
+              Login <IconLogin />
             </>
           ) : (
             <>
-              Cadastrar <IconRegister />
+              Register <IconRegister />
             </>
           )}
         </Button>
@@ -104,12 +104,12 @@ const Autenticacao = () => {
         >
           {modo === "login" ? (
             <>
-              Entrar com Google
+              Login with Google account
               <IconGoogle />
             </>
           ) : (
             <>
-              Cadastrar com Google
+             Register with Google account
               <IconGoogle />
             </>
           )}
@@ -117,24 +117,24 @@ const Autenticacao = () => {
 
         {modo === "login" ? (
           <p className="mt-8">
-            Novo por aqui?
+            New here?
             <a
               onClick={() => setModo("cadastro")}
               className="text-blue-500 hover:text-blue-700 font-semibold cursor-pointer"
             >
               {" "}
-              Crie uma conta gratuitamente
+             Create a new account
             </a>
           </p>
         ) : (
           <p className="mt-8">
-            Ja faz parte da nossa comunidade?
+            You're already a member?
             <a
               onClick={() => setModo("login")}
               className="text-blue-500 hover:text-blue-700 font-semibold cursor-pointer"
             >
               {" "}
-              Entre com suas credenciais
+              Login in with your credentials
             </a>
           </p>
         )}
