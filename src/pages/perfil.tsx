@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/template/Layout";
 import useAuth from "./../../data/hook/useAuth";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import Image from "next/image";
 import { IconChange, IconProfile } from "../components/Icons/Index";
 
 const Perfil = () => {
   const { usuario } = useAuth();
-  const [email, setEmail] = React.useState(usuario?.email);
-  const [name, setName] = React.useState(usuario?.nome);
+  const [email, setEmail] = useState(usuario?.email);
+  const [name, setName] = useState(usuario?.nome);
 
-  const [editingMode, setEditingMode] = React.useState(false);
+  const [editingMode, setEditingMode] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setName(usuario?.nome);
     setEmail(usuario?.email);
   }, []);

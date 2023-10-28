@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CoinsContext from "../../../data/context/CoinsContext";
 import exchange from "../../functions/exchange";
 import AvatarUsuario from "./AvatarUsuario";
@@ -13,11 +13,11 @@ const Cabecalho = (props: CabecalhoProps) => {
   const { totalInvested, totalBalanceInvested } = useContext(CoinsContext);
 
   const [totalInvestedOnWallet, setTotalInvestedOnWallet] =
-    React.useState<number>(0);
+    useState<number>(0);
   const [totalBalanceOnWallet, setTotalBalanceOnWallet] =
-    React.useState<number>(0);
+    useState<number>(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let uniqueObject = (a: any) =>
       [...new Set(a.map((o: any) => JSON.stringify(o)))].map((s: any) =>
         JSON.parse(s)

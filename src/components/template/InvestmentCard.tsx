@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CoinsContext from "../../../data/context/CoinsContext";
 import exchange from "../../functions/exchange";
 import searchCoinById from "../../functions/searchCoinById";
@@ -13,9 +13,9 @@ interface InvestmentCardProps {
 }
 
 const InvestmentCard = ({ currencyId, transactions }: InvestmentCardProps) => {
-  const [coinInfo, setCoinInfo] = React.useState<any>();
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [balance, setBalance] = React.useState<number>(0);
+  const [coinInfo, setCoinInfo] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [balance, setBalance] = useState<number>(0);
 
   const { setTotalInvested, setTotalBalanceInvested } =
     useContext(CoinsContext);
@@ -38,19 +38,19 @@ const InvestmentCard = ({ currencyId, transactions }: InvestmentCardProps) => {
   let quantity = quantityInvested.reduce((a, b) => a + b);
   let selled = sell.reduce((a, b) => a + b);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getCoinInfo();
     setTotalInvested((prev: any) => [...prev, { id: currencyId, invested }]);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setTotalBalanceInvested((prev: any) => [
       ...prev,
       { id: currencyId, balance },
     ]);
   }, [balance]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!coinInfo) return;
     setBalance(
       coinInfo[0]?.market_data?.current_price.brl * quantity + selled - invested

@@ -74,7 +74,7 @@ export function AuthProvider(props: any) {
     imagemUrl: "",
   });
   const [carregando, setCarregando] = useState(true);
-  const [erro, setErro] = React.useState<any>(null);
+  const [erro, setErro] = useState<any>(null);
 
   async function configurarSessao(usuarioFirebase: any) {
     if (usuarioFirebase?.email) {

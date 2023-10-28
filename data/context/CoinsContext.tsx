@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 interface CoinsContextProps {
   allCoins: any;
@@ -19,14 +19,14 @@ const CoinsContext = createContext<CoinsContextProps>({
 });
 
 export function CoinProvider(props: any) {
-  const [carregando, setCarregando] = React.useState(true);
-  const [erro, setErro] = React.useState<any>(null);
-  const [allCoins, setAllCoins] = React.useState<any>();
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState<any>(null);
+  const [allCoins, setAllCoins] = useState<any>();
 
-  const [totalInvested, setTotalInvested] = React.useState([]);
-  const [totalBalanceInvested, setTotalBalanceInvested] = React.useState([]);
+  const [totalInvested, setTotalInvested] = useState([]);
+  const [totalBalanceInvested, setTotalBalanceInvested] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     coinsList();
   }, []);
 
