@@ -4,7 +4,6 @@ export default function searchCoinById(coins: any) {
   const coinsIds = coins.map((coin: any) => coin.id);
   
   const coinsFetched = coinsIds.map(async (coin: any) => {
-    console.log('coin: ',coin);
     const resp = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}`);
     const coinInfo = await resp.json();
     return coinInfo;

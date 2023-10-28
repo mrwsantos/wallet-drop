@@ -21,7 +21,6 @@ const useGetDataFromDB = (collectionName: string) => {
         ...doc.data(),
         id: doc.id,
       }));
-      console.log('KKKKKKKKKKKKKKKKKKKKKKKK: ', response)
       setData(response);
       return { response };
     } catch (e: any) {

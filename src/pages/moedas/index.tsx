@@ -50,7 +50,6 @@ const moedas = () => {
   }, []);
 
   async function getMainCoins() {
-    console.log('entrei em')
     setLoading(true);
     setSearchCoins("");
     setErrorGetCoins(false)
