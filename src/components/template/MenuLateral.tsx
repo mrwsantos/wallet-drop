@@ -36,7 +36,7 @@ const MenuLateral = () => {
         <MenuItem url="/coins" texto="COINS" icone={<IconDollar />} />
         <MenuItem url="/profile" texto="PROFILE" icone={<IconProfile />} />
       </ul>
-      <ul className="p-2 mb-4">
+      <ul className="p-2 mb-4 mx-auto">
         <Button
           className={` 
           border border-zinc-700 md:px-2
@@ -47,9 +47,6 @@ const MenuLateral = () => {
           color="text-white"
           onClick={() => logout()}
         >
-          <span className="hidden md:block">
-          Logout
-          </span>
           <IconLogout />
         </Button>
       </ul>

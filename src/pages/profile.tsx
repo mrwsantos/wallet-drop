@@ -4,6 +4,7 @@ import useAuth from "../../data/hook/useAuth";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { IconChange, IconProfile } from "../components/Icons/Index";
+import IconPanda from "../assets/panda.png";
 
 const Perfil = () => {
   const { usuario } = useAuth();
@@ -19,10 +20,7 @@ const Perfil = () => {
 
   //DUPLICAMOS USUARIO PARA PODER MODIFICAR
   return (
-    <Layout
-      titulo="User profile"
-      subtitulo="Manage your profile settings"
-    >
+    <Layout titulo="User profile" subtitulo="Manage your profile settings">
       <section
         className={`
       flex flex-col items-center 
@@ -47,14 +45,11 @@ const Perfil = () => {
               src={usuario.imagemUrl}
             />
           ) : (
-            <span
-              className=" flex items-center justify-center w-20 h-20 scale-150
-              rounded-full overflow-hidden bg-white text-black
-              border border-zinc-700
-              "
-            >
-              <IconProfile />
-            </span>
+            <img
+              className="w-32 h-32  rounded-full overflow-hidden"
+              alt="User image"
+              src={IconPanda.src}
+            />
           )}
           {editingMode && (
             <Button

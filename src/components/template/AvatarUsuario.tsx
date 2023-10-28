@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import useAuth from "../../../data/hook/useAuth";
-import { IconProfile } from "../Icons/Index";
+import IconPanda from "../../assets/panda.png";
 
 interface AvatarUsuarioProps {
   className?: string;
@@ -27,9 +27,14 @@ const AvatarUsuario = ({ className }: AvatarUsuarioProps) => {
             alt="Avatar usuario"
           />
         ) : (
-          <span className="bg-white rounded-full flex items-center justify-center ml-2 w-8 h-8">
-            <IconProfile />
-          </span>
+          <span className="w-8 h-8 rounded-full overflow-hidden ml-2">
+        
+          <img
+              className="w-8 h-8  rounded-full overflow-hidden"
+              alt="User image"
+              src={IconPanda.src}
+              />
+              </span>
         )}
       </div>
     </Link>
